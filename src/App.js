@@ -8,32 +8,12 @@ import { API_URI, GET_POSTS, GET_CATEGORIES} from './constants/api-constants';
 import {updateList} from './actions/index'
 import './App.css';
 
-const fetchFromApi = (path) => {  
-  return fetch(`${API_URI}${path}`,
-                {
-                  headers: {
-                    'Authorization': "user",
-                    'Content-Type' : 'application/json'
-                  }
-                }).then( (response) => {
-                  return response.json();
-                });
-}
-
-// const getAllPosts = (uri) => {  
-//     return function(dispatch){
-//       return fetchFromApi(uri).then(
-//         data => dispatch(updateList(data))
-//       );
-//     }
-// }
 
 class App extends Component {
   
  
   render() {
     return (
-      
       <div className="app">
         <header>
           <h1>
@@ -41,8 +21,7 @@ class App extends Component {
           </h1>
         </header>
         <main>
-          <List />
-          
+          <List />  
           <span className='add-post'>
             <img 
               src={require("./images/add-post.svg")}

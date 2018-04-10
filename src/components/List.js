@@ -11,31 +11,38 @@ function fetchAllPosts(path){
               'Authorization': "user",
               'Content-Type' : 'application/json'
             }
-          }).then( response => {
-              console.log("Response:" ,response.json())
-              dispatch(updateList(response.json()))
+          }).then( response => response.json())
+            .then( list => {
+              dispatch(updateList(list))
           });
   }
 }
+
+const mapDispatchToProps = (dispatch) => {}
 
 const mapStateToProps = (state) => ({
   posts: state.posts  
 });
 
+
 class ConnectedList extends React.Component{
   
-  componentDidMount(){
-    fetchAllPosts(GET_POSTS);
+  componentDidMount = () => {
+    this.props.fetchAllPosts(GET_POSTS);
   }
   
   render(){
     return(
       <div>
-        {this.posts}
+        <ul className='list-group'>
+          {this.props.posts.map(post => 
+            <li key={post.id} className='list-group-item'>{post.title}</li>
+          )}
+        </ul>
       </div>
     )
   }
 }
 
-const List = connect(mapStateToProps)(ConnectedList)
+const List = connect(mapStateToProps, {fetchAllPosts})(ConnectedList)
 export default List;

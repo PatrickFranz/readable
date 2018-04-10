@@ -1,12 +1,12 @@
 import { ADD_POST, 
-         DELETE_POST, GET_POSTS, 
+         DELETE_POST, UPDATE_LIST, 
          ADD_COMMENT, DELETE_COMMENT, 
          UP_VOTE, DOWN_VOTE } from '../constants/actions';
 
 
 const initialState = {
-  posts: [{}],
-  comments: [{}],
+  posts: [],
+  comments: [],
 }
 
 function reducer(state = initialState, action){
@@ -30,9 +30,11 @@ function reducer(state = initialState, action){
         Object.assign({}, ...state)
       )
     
-    case GET_POSTS:
+    case UPDATE_LIST:
       return(
-        Object.assign({}, ...state)
+        Object.assign({}, ...state, {
+          posts: action.posts
+        })
       )
     
     case UP_VOTE: 
