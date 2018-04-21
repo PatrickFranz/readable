@@ -25,12 +25,27 @@ main{
   
 }
 
-main .post{
+.post{
   display: grid;
-  grid-template-columns: min-content 1fr;
+  grid-template-columns: min-content 4fr 1fr;
   padding: 10px;
   background: #f4fadf;
   margin: 10px 0;
+  cursor: pointer;
+}
+
+.post .comment-bbl{
+  justify-self: right;
+  position: relative;
+}
+
+.post .comment-bbl .comment-count{
+  position: absolute;
+  margin: auto auto;
+  top: 4px;
+  left: 0;
+  right: 0;
+  font-weight: bold;
 }
 
 .vote{
@@ -53,3 +68,4 @@ main .post{
 .arrow-dn{
   border-top: 10px solid black;
 }
+

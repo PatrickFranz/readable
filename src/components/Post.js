@@ -1,15 +1,9 @@
 import React from 'react';
 import Vote from './Vote';
-
-const id = 1
-      ,timestamp = Date.now()
-      ,title = 'A Title'
-      ,body = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis voluptate, omnis quisquam aperiam perspiciatis excepturi earum reprehenderit libero iure tempora commodi nisi rem in repudiandae temporibus ducimus expedita quos esse.'
-      ,author = 'Me'
-      ,voteScore = 1
-      ,deleted = false;
+import {Link} from 'react-router-dom';
 
 class Post extends React.Component{
+  
   upvote = (e) => {
     console.log(e)
     //Add 1 to voteScore
@@ -20,14 +14,19 @@ class Post extends React.Component{
   }
   
   render(){
+    const {post} = this.props;
     return(
-      <div className='post'>
+      <Link to={`/post-details/${post.id}`} className='post'>
         <Vote upvote={this.upvote}
               downvote={this.downvote}
-              // voteTally={voteTally}
+              post={post}
               />
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet iusto eum voluptatum labore nulla quisquam alias corporis natus voluptates quos! Itaque unde nostrum illum eligendi modi harum at ipsam hic.</p>
-      </div>
+        <p>{post.title}</p>
+        <span className="comment-bbl">
+          <span className="comment-count">{post.commentCount}</span>
+          <img src={require('../images/comment-bbl.svg')}/>
+        </span>
+      </Link>
     )
   }
 

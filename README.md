@@ -68,4 +68,5 @@ Thanks to the React Nanodegree team for putting together a great project and pro
 I get a bunch of my images from the great folks over at the [Noun Project](https://thenounproject.com) such as ...
 
 'Add note' icon by Ashwini Sukhdeve from the Noun Project
+'comment' icon by Setyo Ari Wibowo from the Noun Project
 
